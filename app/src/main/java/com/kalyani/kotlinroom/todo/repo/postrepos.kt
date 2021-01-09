@@ -1,13 +1,14 @@
-package com.kalyani.kotlinroom.repo
+package com.kalyani.kotlinroom.todo.repo
 
 import androidx.lifecycle.MutableLiveData
-import com.kalyani.kotlinroom.model.PostsItem
-import com.kalyani.kotlinroom.service.postapi
+import com.kalyani.kotlinroom.todo.model.PostsItem
+import com.kalyani.kotlinroom.todo.service.postapi
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 class postrepos {
     var datalist = MutableLiveData<List<PostsItem>>()
+
 
     fun getdata() {
 var r = Retrofit.Builder().baseUrl("https://jsonplaceholder.typicode.com/").addConverterFactory(GsonConverterFactory.create()).build()

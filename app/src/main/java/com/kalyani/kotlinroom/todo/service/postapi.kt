@@ -1,6 +1,6 @@
-package com.kalyani.kotlinroom.service
+package com.kalyani.kotlinroom.todo.service
 
-import com.kalyani.kotlinroom.model.PostsItem
+import com.kalyani.kotlinroom.todo.model.PostsItem
 import retrofit2.Call
 import retrofit2.http.GET
 

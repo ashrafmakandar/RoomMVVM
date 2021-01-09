@@ -1,9 +1,9 @@
-package com.kalyani.kotlinroom.viewmodel
+package com.kalyani.kotlinroom.todo.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kalyani.kotlinroom.model.PostsItem
-import com.kalyani.kotlinroom.repo.postrepos
+import com.kalyani.kotlinroom.todo.model.PostsItem
+import com.kalyani.kotlinroom.todo.repo.postrepos
 
 class postvmodel : ViewModel() {
 var reposs= postrepos();

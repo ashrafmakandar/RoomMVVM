@@ -1,4 +1,4 @@
-package com.kalyani.kotlinroom.model
+package com.kalyani.kotlinroom.todo.model
 
 
 import androidx.room.ColumnInfo

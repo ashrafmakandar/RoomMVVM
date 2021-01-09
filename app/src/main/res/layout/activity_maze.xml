@@ -4,16 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".todo.ui.MainActivity">
-<ProgressBar
-    android:layout_width="match_parent"
-    android:layout_centerInParent="true"
-    android:id="@+id/pgr"
-    android:layout_height="50dp"/>
+    tools:context=".maze.ui.Maze">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recylerviewone"
-        android:background="#fff"
+        android:id="@+id/mazerecview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </RelativeLayout>
