@@ -1,6 +1,7 @@
 package com.kalyani.kotlinroom.todo.ui
 
 import android.content.Intent
+import android.icu.util.TimeUnit
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,10 +11,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
+import androidx.work.*
 import com.kalyani.kotlinroom.databinding.ActivityMainBinding
 import com.kalyani.kotlinroom.todo.db.Appdb
 import com.kalyani.kotlinroom.todo.adapter.adapt
 import com.kalyani.kotlinroom.maze.ui.Maze
+import com.kalyani.kotlinroom.todo.UploadWorker
 import com.kalyani.kotlinroom.todo.utils.itemslcik
 import com.kalyani.kotlinroom.todo.viewmodel.postvmodel
 import es.dmoral.toasty.Toasty
@@ -44,7 +47,10 @@ class MainActivity : AppCompatActivity(), itemslcik {
 
 
         })
-        // Toast.makeText(applicationContext,""+db.postdao().getAll(),Toast.LENGTH_SHORT).show()
+        val periodicWorkRequest = PeriodicWorkRequest
+            .Builder(UploadWorker::class.java, 1, java.util.concurrent.TimeUnit.MINUTES)
+            .build()
+        WorkManager.getInstance(applicationContext).enqueue(periodicWorkRequest)
         binding.recylerviewone.layoutManager = LinearLayoutManager(applicationContext)
         binding.recylerviewone.setHasFixedSize(true)
         var ada = adapt(

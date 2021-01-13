@@ -3,19 +3,14 @@ package com.kalyani.kotlinroom.maze.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import com.kalyani.kotlinroom.R
-import com.kalyani.kotlinroom.databinding.ActivityMainBinding
 import com.kalyani.kotlinroom.databinding.ActivityMazeBinding
 import com.kalyani.kotlinroom.maze.adapter.mazeadapter
 import com.kalyani.kotlinroom.maze.db.mazedb
 import com.kalyani.kotlinroom.maze.viewmodel.mazevmodel
-import com.kalyani.kotlinroom.todo.adapter.adapt
-import es.dmoral.toasty.Toasty
 
 class Maze : AppCompatActivity() {
     val mazevmodel: mazevmodel by viewModels()
@@ -32,6 +27,7 @@ class Maze : AppCompatActivity() {
         mazevmodel.getall().observe(this, Observer {
            // Toasty.success(applicationContext, "" + it, Toasty.LENGTH_LONG).show()
             db.mazedao().insertAll(it)
+            binding.pgrs.visibility= View.VISIBLE
         })
 
         binding.mazerecview.layoutManager = LinearLayoutManager(applicationContext)
@@ -39,5 +35,6 @@ class Maze : AppCompatActivity() {
         var ada = mazeadapter(applicationContext,db.mazedao().getAll())
 
         binding.mazerecview.adapter = ada
+        binding.pgrs.visibility= View.INVISIBLE
     }
 }
